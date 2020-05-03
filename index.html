@@ -54,8 +54,10 @@
 				);
 				if (criteria1 != null && criteria1 >= 8 && criteria1 <= 128) {
 					RunCriteria2();
-					return criteria1;
+					document.getElementById("demo").innerHTML =
+						"Length? " + criteria1 + " Uppercase? " + LowCase;
 
+					return criteria1;
 					// document.getElementById("demo").innerHTML =
 					// 	"You Password will be:" + criteria1;
 				} else {
@@ -65,9 +67,9 @@
 			}
 
 			function RunCriteria2() {
-				var criteria2 = prompt("Include LowerCase Y/N?", "Y");
-				if (criteria2 != null && criteria2 === "Y") {
-					var LowCase = [
+				criteria2 = prompt("Include LowerCase Y/N?", "Y");
+				if (criteria2 != null && criteria2 == "Y") {
+					LowCase = [
 						"a",
 						"b",
 						"c",
@@ -95,18 +97,12 @@
 						"y",
 						"z",
 					];
-					CalcOuput();
-				} else if (criteria2 != null && criteria2 === "N") {
+				} else if (criteria2 != null && criteria2 == "N") {
 					LowCase = "";
-					CalcOuput();
 				} else {
 					document.getElementById("demo").innerHTML =
 						"Ops!! Either you've pressed cancel or password length selected is not between 8(min) and 128(max)";
 				}
-			}
-			function CalcOuput() {
-				document.getElementById("demo").innerHTML =
-					"TEST" + criteria1 + LowCase;
 			}
 		</script>
 		<!-- <script src="assets/js/jquery.min.js"></script>
