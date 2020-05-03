@@ -3,12 +3,8 @@
 	<head>
 		<title>Dre's Password Generator</title>
 		<meta charset="utf-8" />
-		<link
-			rel="icon"
-			type="image/png"
-			href="http://t3.gstatic.com/images?q=tbn:ANd9GcR_NEHSUJFqjy9hN9mykZ_HtBTfcoSUBky2U8T7r-OEcx7qycAV"
-		/>
-
+		<!-- Key Icon -->
+		<link rel="icon" type="image/svg" href="./assets/images/key-solid.svg" />
 		<!-- Reset CSS-->
 		<link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
 		<!-- BootStrap-->
@@ -21,6 +17,7 @@
 		<!-- Core theme CSS-->
 		<!-- <link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> -->
 		<!-- All things JavaScript -->
+
 		<script
 			src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
 			crossorigin="anonymous"
@@ -40,15 +37,27 @@
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			function RunPWGen() {
+				document.getElementById("demo").innerHTML = "Paragraph changed.";
+				confirm("Criteria 1");
+			}
+		</script>
 	</head>
 	<body>
+		<h1>Password Generator</h1>
+		<p id="demo">Start Here</p>
+		<button type="button" onclick="RunPWGen()">
+			Create Password
+		</button>
+
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
+		<!-- <script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script src="assets/js/main.js"></script> -->
 	</body>
 </html>
