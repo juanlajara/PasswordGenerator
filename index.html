@@ -39,10 +39,16 @@
 		></script>
 		<script>
 			function RunPWGen() {
-				var criteria1 = prompt("How long would you like it ?", 1);
-				if (criteria1 != null) {
+				var criteria1 = prompt(
+					"How long would you like it ? (Min 8 / Max 128)",
+					8
+				);
+				if (criteria1 != null && criteria1 >= 8 && criteria1 <= 128) {
 					document.getElementById("demo").innerHTML =
-						"Hello " + criteria1 + "! How are you today?";
+						"You Password will be:" + criteria1;
+				} else {
+					document.getElementById("demo").innerHTML =
+						"Ops!! you either canceled or password length selected is not between 8(min) and 128(max)";
 				}
 			}
 		</script>
