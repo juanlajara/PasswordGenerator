@@ -39,17 +39,21 @@
 		></script>
 		<script>
 			function RunPWGen() {
-				document.getElementById("demo").innerHTML = "Paragraph changed.";
-				confirm("Criteria 1");
+				var criteria1 = prompt("How long would you like it ?", 1);
+				if (criteria1 != null) {
+					document.getElementById("demo").innerHTML =
+						"Hello " + criteria1 + "! How are you today?";
+				}
 			}
 		</script>
 	</head>
 	<body>
 		<h1>Password Generator</h1>
-		<p id="demo">Start Here</p>
+
 		<button type="button" onclick="RunPWGen()">
 			Create Password
 		</button>
+		<p id="demo"></p>
 
 		<!-- Scripts -->
 		<!-- <script src="assets/js/jquery.min.js"></script>
