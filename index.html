@@ -44,18 +44,57 @@
 					8
 				);
 				if (criteria1 != null && criteria1 >= 8 && criteria1 <= 128) {
-					document.getElementById("demo").innerHTML =
-						"You Password will be:" + criteria1;
+					RunCriteria2();
+
+					// document.getElementById("demo").innerHTML =
+					// 	"You Password will be:" + criteria1;
 				} else {
 					document.getElementById("demo").innerHTML =
-						"Ops!! you either canceled or password length selected is not between 8(min) and 128(max)";
+						"Ops!! Either pressed you canceled or password length selected is not between 8(min) and 128(max)";
 				}
+			}
+
+			function RunCriteria2() {
+				var criteria2 = prompt("Include LowerCase Y/N?", "Y");
+				if (criteria2 != null && criteria2 === "Y") {
+					var LowCase = [
+						"a",
+						"b",
+						"c",
+						"d",
+						"e",
+						"f",
+						"g",
+						"h",
+						"i",
+						"j",
+						"k",
+						"l",
+						"m",
+						"n",
+						"o",
+						"p",
+						"q",
+						"r",
+						"s",
+						"t",
+						"u",
+						"v",
+						"w",
+						"x",
+						"y",
+						"z",
+					];
+				} else {
+					LowCase = "";
+				}
+				return LowCase;
+				document.getElementById("demo").innerHTML = criteria1 * LowCase;
 			}
 		</script>
 	</head>
 	<body>
 		<h1>Password Generator</h1>
-
 		<button type="button" onclick="RunPWGen()">
 			Create Password
 		</button>
