@@ -18,7 +18,7 @@
 			// Start the Password Generator
 			function RunPWGen() {
 				var PwLength = prompt(
-					"How long would you like it ? (Min 8 / Max 128)",
+					"How long would you like it (Min 8 / Max 128) ?",
 					8
 				);
 				// Enforce the range Max & Min
@@ -32,38 +32,40 @@
 			}
 			// Ask User if lower case should be included
 			function lwrCase() {
-				var lwrCaseVal = prompt("Include Lowercase ? ", "Y");
+				var lwrCaseVal = prompt("Include Lowercase Y/N ? ", "Y");
 				// Create Lowercase array
 				if (lwrCaseVal != null && lwrCaseVal === "Y") {
 					lwrCaseVal = range("a", "z");
-					// Evoke Next Criteria
+					// Evoke Next Uppercase Criteria
 					upCase();
 				}
 				if (lwrCaseVal != null && lwrCaseVal === "N") {
+					upCase();
 				} else {
 					outOfRangeOrCancel();
 				}
 			}
 			// Ask User if upper case should be included
 			function upCase() {
-				var upCaseVal = prompt("Include Uppercase ? ", "Y");
+				var upCaseVal = prompt("Include Uppercase Y/N ? ", "Y");
 				if (upCaseVal != null && upCaseVal === "Y") {
 					upCaseVal = range("A", "Z");
-					// Evoke Next Criteria
+					// Evoke Next Numeric Criteria
 					incNum();
 				}
 				if (upCaseVal != null && upCaseVal === "N") {
+					incNum();
 				} else {
 					outOfRangeOrCancel();
 				}
 			}
 			// Ask user if we should include Numeric Values
 			function incNum() {
-				var incNumVal = prompt("Include Numeric ? ", "Y");
+				var incNumVal = prompt("Include Numeric Y/N ? ", "Y");
 				if (incNumVal != null && incNumVal === "Y") {
 					incNumVal = range("0", "9");
 					// Evoke Next Criteria
-					// incNum();
+					SpecialChar();
 				}
 				if (incNumVal != null && incNumVal === "N") {
 				} else {
@@ -71,10 +73,31 @@
 				}
 			}
 
+			function SpecialChar() {
+				var SpecialVal = prompt("Include Special Characters Y/N ? ", "Y");
+				if (SpecialVal != null && SpecialVal === "Y") {
+					SpecialVal = range(" ", "/").concat(
+						range(":", "@"),
+						range("[", "`"),
+						range("{", "~")
+					);
+					// Evoke Next Criteria
+					generatePw();
+				}
+				if (SpecialVal != null && SpecialVal === "N") {
+					generatePw();
+				} else {
+					outOfRangeOrCancel();
+				}
+			}
+
+			function generatePw()
+
 			function outOfRangeOrCancel() {
 				document.getElementById("demo").innerHTML =
 					"Ops!! you either canceled or password length selected is not between 8(min) and 128(max)";
 			}
+
 			function range(start, stop) {
 				var result = [];
 				for (
