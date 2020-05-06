@@ -16,19 +16,27 @@
 		/>
 		<script>
 			// Start the Password Generator
+
+			// var PwLengthVal = 0;
+			// var lwrCaseVal = [];
+			// var upCaseVal = [];
+			// var incNumVal = [];
+			// var SpecialVal = [];
+
 			function RunPWGen() {
-				var PwLength = prompt(
+				var PwLengthVal = prompt(
 					"How long would you like it (Min 8 / Max 128) ?",
 					8
 				);
 				// Enforce the range Max & Min
-				if (PwLength != null && PwLength >= 8 && PwLength <= 128) {
+				if (PwLengthVal != null && PwLengthVal >= 8 && PwLengthVal <= 128) {
 					lwrCase();
 				}
 				// If Cancelled or Length is out of range
 				else {
 					outOfRangeOrCancel();
 				}
+				// return PwLengthVal;
 			}
 			// Ask User if lower case should be included
 			function lwrCase() {
@@ -44,6 +52,7 @@
 				} else {
 					outOfRangeOrCancel();
 				}
+				return lwrCaseVal;
 			}
 			// Ask User if upper case should be included
 			function upCase() {
@@ -68,11 +77,12 @@
 					SpecialChar();
 				}
 				if (incNumVal != null && incNumVal === "N") {
+					SpecialChar();
 				} else {
 					outOfRangeOrCancel();
 				}
 			}
-
+			// Ask user if we should include Special  Char
 			function SpecialChar() {
 				var SpecialVal = prompt("Include Special Characters Y/N ? ", "Y");
 				if (SpecialVal != null && SpecialVal === "Y") {
@@ -81,7 +91,7 @@
 						range("[", "`"),
 						range("{", "~")
 					);
-					// Evoke Next Criteria
+					// Generate Password
 					generatePw();
 				}
 				if (SpecialVal != null && SpecialVal === "N") {
@@ -91,11 +101,14 @@
 				}
 			}
 
-			function generatePw()
+			function generatePw() {
+				document.getElementById("demo").innerHTML =
+					"Test" + lwrCaseVal.concat(upCaseVal, incNumVal, SpecialVal);
+			}
 
 			function outOfRangeOrCancel() {
 				document.getElementById("demo").innerHTML =
-					"Ops!! you either canceled or password length selected is not between 8(min) and 128(max)";
+					"Ops!! You either selected Cancel,a password length selected our side the range: 8(min) / 128(max) or answered a question with something other than 'Y' or 'N'";
 			}
 
 			function range(start, stop) {
