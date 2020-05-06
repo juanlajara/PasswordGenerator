@@ -36,8 +36,36 @@
 				// Create Lowercase array
 				if (lwrCaseVal != null && lwrCaseVal === "Y") {
 					lwrCaseVal = range("a", "z");
+					// Evoke Next Criteria
+					upCase();
 				}
-				if (llwrCaseVal != null && wrCaseVal === "N") {
+				if (lwrCaseVal != null && lwrCaseVal === "N") {
+				} else {
+					outOfRangeOrCancel();
+				}
+			}
+			// Ask User if upper case should be included
+			function upCase() {
+				var upCaseVal = prompt("Include Uppercase ? ", "Y");
+				if (upCaseVal != null && upCaseVal === "Y") {
+					upCaseVal = range("A", "Z");
+					// Evoke Next Criteria
+					incNum();
+				}
+				if (upCaseVal != null && upCaseVal === "N") {
+				} else {
+					outOfRangeOrCancel();
+				}
+			}
+			// Ask user if we should include Numeric Values
+			function incNum() {
+				var incNumVal = prompt("Include Numeric ? ", "Y");
+				if (incNumVal != null && incNumVal === "Y") {
+					incNumVal = range("0", "9");
+					// Evoke Next Criteria
+					// incNum();
+				}
+				if (incNumVal != null && incNumVal === "N") {
 				} else {
 					outOfRangeOrCancel();
 				}
