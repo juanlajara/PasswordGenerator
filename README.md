@@ -47,6 +47,6 @@ SO THAT I can create a strong password that provides greater security
 - WHEN the password is generated
 - THEN the password is either displayed in an alert or written to the page
 
-The following image demonstrates the application functionality:
+🎉 The following demonstrates the application functionality:
 
 ![Demo](https://github.com/juanlajara/PasswordGenerator/blob/master/Assets/images/Dre's%20Password%20Generator.gif)
