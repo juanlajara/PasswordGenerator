@@ -66,19 +66,20 @@
 					if (useSpecial === "Y") {
 						results.push(...SpecialVal);
 					}
-					generatePw(results, PwLengthVal);
-				} else if (
-					PwLengthVal != null &&
-					PwLengthVal < 8 &&
-					PwLengthVal > 128
-				) {
-					console.log("too high or too low");
+					if (results.length != 0) {
+						generatePw(results, PwLengthVal);
+					} else {
+						outOfRangeOrCancel();
+					}
+				} else {
 					outOfRangeOrCancel();
 				}
+				// if ((PwLengthVal = null || results.length === 0)) {
+				// 	outOfRangeOrCancel();
+				// }
+
 				// If Cancelled or Length is out of range
-				else {
-					outOfRangeOrCancel();
-				}
+
 				// return PwLengthVal;
 			}
 			// Ask User if lower case should be included
@@ -145,14 +146,11 @@
 			// }
 
 			function generatePw(results, PwLengthVal) {
-				console.log(results);
-
 				function shuffle(array) {
 					array.sort(() => Math.random() - 0.5);
 				}
 
 				shuffle(results);
-				console.log(results.slice(0, PwLengthVal).join(""));
 				document.getElementById("demo").innerHTML =
 					"Password: " + results.slice(0, PwLengthVal).join("");
 			}
