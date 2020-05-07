@@ -3,10 +3,14 @@
 	<head>
 		<title>Dre's Password Generator</title>
 		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
 		<!-- Key Icon -->
-		<link rel="icon" type="image/svg" href="./assets/images/key-solid.svg" />
+		<link rel="icon" type="image/svg" href="./Assets/images/key-solid.svg" />
 		<!-- Reset CSS-->
-		<link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="./Assets/css/reset.css" />
 		<!-- BootStrap-->
 		<link
 			rel="stylesheet"
@@ -14,14 +18,22 @@
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 			crossorigin="anonymous"
 		/>
+		<script src="./Assets/script.js"></script>
 	</head>
-	<body>
-		<h1>Password Generator</h1>
+	<body class="container mt-5 text-center">
+		<main>
+			<h1>Password Generator</h1>
 
-		<button type="button" onclick="RunPWGen()">
-			Create Password
-		</button>
-		<p id="demo"></p>
+			<textarea
+				class="form-control mt-textarea text-center"
+				id="demo"
+			></textarea>
+
+			<div class="mt-3">
+				<button class="btn btn-primary" type="button" onclick="RunPWGen()">
+					Create Password
+				</button>
+			</div>
+		</main>
 	</body>
-	<script src="./Assets/script.js"></script>
 </html>
