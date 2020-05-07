@@ -4,7 +4,7 @@
 <a href='https://juanlajara.github.io/PasswordGenerator/' target='_blank'>Live PW Generator Link</a>
 </p>
 
-## User Story
+<h2> ✨User Story</h2>
 
 ```
 AS AN employee with access to sensitive data
