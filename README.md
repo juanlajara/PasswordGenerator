@@ -27,9 +27,7 @@ SO THAT I can create a strong password that provides greater security
     <li>juanlajara001@gmail.com</li>
 </ul>
 
-<h2>⚓ Minimum Requirements</h2>
-
-### Acceptance Criteria
+<h2>⚓ Acceptance Criteria</h2>
 
 - GIVEN I need a new, secure password
 - WHEN I click the button to generate a password
@@ -47,6 +45,6 @@ SO THAT I can create a strong password that provides greater security
 - WHEN the password is generated
 - THEN the password is either displayed in an alert or written to the page
 
-🎉 The following demonstrates the application functionality:
+<h2>🎉 The following demonstrates the application functionality:</h2>
 
 ![Demo](https://github.com/juanlajara/PasswordGenerator/blob/master/Assets/images/Dre's%20Password%20Generator.gif)
