@@ -35,10 +35,14 @@
 
 				// Enforce the range Max & Min
 				if (PwLengthVal != null && PwLengthVal >= 8 && PwLengthVal <= 128) {
-					var useLwrCase = prompt("Include Lowercase Y/N ? ", "Y");
-					var useUpperCase = prompt("Include Uppercase Y/N ? ", "Y");
-					var useNums = prompt("Include Numeric Y/N ? ", "Y");
-					var useSpecial = prompt("Include Special Characters Y/N ? ", "Y");
+					var useLwrCase = prompt("Include Lowercase Cancel = No     Ok = Yes");
+					var useUpperCase = prompt(
+						"Include Uppercase Cancel = No     Ok = Yes"
+					);
+					var useNums = prompt("Include Numeric Cancel = No     Ok = Yes");
+					var useSpecial = prompt(
+						"Include Special Characters Cancel = No     Ok = Yes"
+					);
 					if (PwLengthVal > 95) {
 						results.push(...results);
 					}
@@ -63,7 +67,7 @@
 					PwLengthVal < 8 &&
 					PwLengthVal > 128
 				) {
-					console.log("too high or too low");
+					// console.log("too high or too low");
 					outOfRangeOrCancel();
 				}
 				// If Cancelled or Length is out of range
@@ -74,7 +78,7 @@
 			}
 			// Ask User if lower case should be included
 			// function lwrCase() {
-			// 	var lwrCaseVal = prompt("Include Lowercase Y/N ? ", "Y");
+			// 	var lwrCaseVal = prompt("Include Lowercase Cancel = No     Ok = Yes");
 			// 	// Create Lowercase array
 			// 	if (lwrCaseVal != null && lwrCaseVal === "Y") {
 			// 		lwrCaseVal = range("a", "z");
@@ -90,7 +94,7 @@
 			// }
 			// Ask User if upper case should be included
 			// function upCase() {
-			// 	var upCaseVal = prompt("Include Uppercase Y/N ? ", "Y");
+			// 	var upCaseVal = prompt("Include Uppercase Cancel = No     Ok = Yes");
 			// 	if (upCaseVal != null && upCaseVal === "Y") {
 			// 		upCaseVal = range("A", "Z");
 			// 		// Evoke Next Numeric Criteria
@@ -104,7 +108,7 @@
 			// }
 			// Ask user if we should include Numeric Values
 			// function incNum() {
-			// 	var incNumVal = prompt("Include Numeric Y/N ? ", "Y");
+			// 	var incNumVal = prompt("Include Numeric Cancel = No     Ok = Yes");
 			// 	if (incNumVal != null && incNumVal === "Y") {
 			// 		incNumVal = range("0", "9");
 			// 		// Evoke Next Criteria
@@ -118,7 +122,7 @@
 			// }
 			// Ask user if we should include Special  Char
 			// function SpecialChar() {
-			// 	var SpecialVal = prompt("Include Special Characters Y/N ? ", "Y");
+			// 	var SpecialVal = prompt("Include Special Characters Cancel = No     Ok = Yes");
 			// 	if (SpecialVal != null && SpecialVal === "Y") {
 			// 		SpecialVal = range(" ", "/").concat(
 			// 			range(":", "@"),
