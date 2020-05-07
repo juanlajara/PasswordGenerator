@@ -14,164 +14,6 @@
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 			crossorigin="anonymous"
 		/>
-		<script>
-			// Start the Password Generator
-
-			var lwrCaseVal = range("a", "z");
-			var upCaseVal = range("A", "Z");
-			var incNumVal = range("0", "9");
-			var SpecialVal = range(" ", "/").concat(
-				range(":", "@"),
-				range("[", "`"),
-				range("{", "~")
-			);
-			var results = [];
-
-			function RunPWGen() {
-				var PwLengthVal = prompt(
-					"How long would you like it (Min 8 / Max 128) ?",
-					8
-				);
-
-				// Enforce the range Max & Min
-				if (PwLengthVal != null && PwLengthVal >= 8 && PwLengthVal <= 128) {
-					var useLwrCase = prompt(
-						"Include Lowercase Cancel = No  Ok = Yes ? ",
-						"Y"
-					);
-					var useUpperCase = prompt(
-						"Include Uppercase Cancel = No  Ok = Yes ? ",
-						"Y"
-					);
-					var useNums = prompt("Include Numeric Cancel = No  Ok = Yes ? ", "Y");
-					var useSpecial = prompt(
-						"Include Special Characters Cancel = No  Ok = Yes ? ",
-						"Y"
-					);
-					if (PwLengthVal > 95) {
-						results.push(...results);
-					}
-					if (useLwrCase === "Y") {
-						results.push(...lwrCaseVal);
-					}
-
-					if (useUpperCase === "Y") {
-						results.push(...upCaseVal);
-					}
-
-					if (useNums === "Y") {
-						results.push(...incNumVal);
-					}
-
-					if (useSpecial === "Y") {
-						results.push(...SpecialVal);
-					}
-					if (results.length != 0) {
-						generatePw(results, PwLengthVal);
-					} else {
-						outOfRangeOrCancel();
-					}
-				} else {
-					outOfRangeOrCancel();
-				}
-				// if ((PwLengthVal = null || results.length === 0)) {
-				// 	outOfRangeOrCancel();
-				// }
-
-				// If Cancelled or Length is out of range
-
-				// return PwLengthVal;
-			}
-			// Ask User if lower case should be included
-			// function lwrCase() {
-			// 	var lwrCaseVal = prompt("Include Lowercase Cancel = No  Ok = Yes ? ", "Y");
-			// 	// Create Lowercase array
-			// 	if (lwrCaseVal != null && lwrCaseVal === "Y") {
-			// 		lwrCaseVal = range("a", "z");
-			// 		// Evoke Next Uppercase Criteria
-			// 		upCase();
-			// 	}
-			// 	if (lwrCaseVal != null && lwrCaseVal === "N") {
-			// 		upCase();
-			// 	} else {
-			// 		outOfRangeOrCancel();
-			// 	}
-			// 	return lwrCaseVal;
-			// }
-			// Ask User if upper case should be included
-			// function upCase() {
-			// 	var upCaseVal = prompt("Include Uppercase Cancel = No  Ok = Yes ? ", "Y");
-			// 	if (upCaseVal != null && upCaseVal === "Y") {
-			// 		upCaseVal = range("A", "Z");
-			// 		// Evoke Next Numeric Criteria
-			// 		incNum();
-			// 	}
-			// 	if (upCaseVal != null && upCaseVal === "N") {
-			// 		incNum();
-			// 	} else {
-			// 		outOfRangeOrCancel();
-			// 	}
-			// }
-			// Ask user if we should include Numeric Values
-			// function incNum() {
-			// 	var incNumVal = prompt("Include Numeric Cancel = No  Ok = Yes ? ", "Y");
-			// 	if (incNumVal != null && incNumVal === "Y") {
-			// 		incNumVal = range("0", "9");
-			// 		// Evoke Next Criteria
-			// 		SpecialChar();
-			// 	}
-			// 	if (incNumVal != null && incNumVal === "N") {
-			// 		SpecialChar();
-			// 	} else {
-			// 		outOfRangeOrCancel();
-			// 	}
-			// }
-			// Ask user if we should include Special  Char
-			// function SpecialChar() {
-			// 	var SpecialVal = prompt("Include Special Characters Cancel = No  Ok = Yes ? ", "Y");
-			// 	if (SpecialVal != null && SpecialVal === "Y") {
-			// 		SpecialVal = range(" ", "/").concat(
-			// 			range(":", "@"),
-			// 			range("[", "`"),
-			// 			range("{", "~")
-			// 		);
-			// 		// Generate Password
-			// 		generatePw();
-			// 	}
-			// 	if (SpecialVal != null && SpecialVal === "N") {
-			// 		generatePw();
-			// 	} else {
-			// 		outOfRangeOrCancel();
-			// 	}
-			// }
-
-			function generatePw(results, PwLengthVal) {
-				function shuffle(array) {
-					array.sort(() => Math.random() - 0.5);
-				}
-
-				shuffle(results);
-				document.getElementById("demo").innerHTML =
-					"Password: " + results.slice(0, PwLengthVal).join("");
-			}
-
-			function outOfRangeOrCancel() {
-				document.getElementById("demo").innerHTML =
-					"Ops!! You either selected Cancel,a password length selected our side the range: 8(min) / 128(max) or answered a question with something other than 'Y' or 'N'";
-			}
-
-			function range(start, stop) {
-				var result = [];
-				for (
-					var idx = start.charCodeAt(0), end = stop.charCodeAt(0);
-					idx <= end;
-					++idx
-				) {
-					result.push(String.fromCharCode(idx));
-				}
-				return result;
-			}
-		</script>
 	</head>
 	<body>
 		<h1>Password Generator</h1>
@@ -181,4 +23,92 @@
 		</button>
 		<p id="demo"></p>
 	</body>
+	<script>
+		// Set  Variables
+		var lwrCaseVal = range("a", "z");
+		var upCaseVal = range("A", "Z");
+		var incNumVal = range("0", "9");
+		var SpecialVal = range(" ", "/").concat(
+			range(":", "@"),
+			range("[", "`"),
+			range("{", "~")
+		);
+		var results = [];
+		//Run Password Generator
+		function RunPWGen() {
+			var PwLengthVal = prompt(
+				"How long would you like it (Min 8 / Max 128) ?",
+				8
+			);
+
+			// Enforce the range Max & Min
+			if (PwLengthVal != null && PwLengthVal >= 8 && PwLengthVal <= 128) {
+				// Ask the user for what to include
+				var useLwrCase = confirm("Include Lowercase Cancel = No  Ok = Yes ? ");
+				var useUpperCase = confirm(
+					"Include Uppercase Cancel = No  Ok = Yes ? "
+				);
+				var useNums = confirm("Include Numeric Cancel = No  Ok = Yes ? ");
+				var useSpecial = confirm(
+					"Include Special Characters Cancel = No  Ok = Yes ? "
+				);
+				// Add Selected Arrays to Results
+				if (PwLengthVal > 95) {
+					results.push(...results);
+				}
+				if (useLwrCase == true) {
+					results.push(...lwrCaseVal);
+				}
+
+				if (useUpperCase == true) {
+					results.push(...upCaseVal);
+				}
+
+				if (useNums == true) {
+					results.push(...incNumVal);
+				}
+
+				if (useSpecial == true) {
+					results.push(...SpecialVal);
+				}
+				// Validate user selected at least One Character Option
+				if (results.length != 0) {
+					generatePw(results, PwLengthVal);
+				}
+				// If user selected a range outside the min/max or No Character Option
+				else {
+					outOfRangeOrCancel();
+				}
+			} else {
+				outOfRangeOrCancel();
+			}
+		}
+
+		function generatePw(results, PwLengthVal) {
+			function shuffle(array) {
+				array.sort(() => Math.random() - 0.5);
+			}
+
+			shuffle(results);
+			document.getElementById("demo").innerHTML =
+				"Password: " + results.slice(0, PwLengthVal).join("");
+		}
+
+		function outOfRangeOrCancel() {
+			document.getElementById("demo").innerHTML =
+				"Ops!! Either the selected password length is outside the range: 8(min)-128(max); or you Canceled all subsequent character options";
+		}
+
+		function range(start, stop) {
+			var result = [];
+			for (
+				var idx = start.charCodeAt(0), end = stop.charCodeAt(0);
+				idx <= end;
+				++idx
+			) {
+				result.push(String.fromCharCode(idx));
+			}
+			return result;
+		}
+	</script>
 </html>
