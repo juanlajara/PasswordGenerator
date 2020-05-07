@@ -17,20 +17,54 @@
 		<script>
 			// Start the Password Generator
 
-			// var PwLengthVal = 0;
-			// var lwrCaseVal = [];
-			// var upCaseVal = [];
-			// var incNumVal = [];
-			// var SpecialVal = [];
+			var lwrCaseVal = range("a", "z");
+			var upCaseVal = range("A", "Z");
+			var incNumVal = range("0", "9");
+			var SpecialVal = range(" ", "/").concat(
+				range(":", "@"),
+				range("[", "`"),
+				range("{", "~")
+			);
+			var results = [];
 
 			function RunPWGen() {
 				var PwLengthVal = prompt(
 					"How long would you like it (Min 8 / Max 128) ?",
 					8
 				);
+
 				// Enforce the range Max & Min
 				if (PwLengthVal != null && PwLengthVal >= 8 && PwLengthVal <= 128) {
-					lwrCase();
+					var useLwrCase = prompt("Include Lowercase Y/N ? ", "Y");
+					var useUpperCase = prompt("Include Uppercase Y/N ? ", "Y");
+					var useNums = prompt("Include Numeric Y/N ? ", "Y");
+					var useSpecial = prompt("Include Special Characters Y/N ? ", "Y");
+					if (PwLengthVal > 95) {
+						results.push(...results);
+					}
+					if (useLwrCase === "Y") {
+						results.push(...lwrCaseVal);
+					}
+
+					if (useUpperCase === "Y") {
+						results.push(...upCaseVal);
+					}
+
+					if (useNums === "Y") {
+						results.push(...incNumVal);
+					}
+
+					if (useSpecial === "Y") {
+						results.push(...SpecialVal);
+					}
+					generatePw(results, PwLengthVal);
+				} else if (
+					PwLengthVal != null &&
+					PwLengthVal < 8 &&
+					PwLengthVal > 128
+				) {
+					console.log("too high or too low");
+					outOfRangeOrCancel();
 				}
 				// If Cancelled or Length is out of range
 				else {
@@ -39,71 +73,79 @@
 				// return PwLengthVal;
 			}
 			// Ask User if lower case should be included
-			function lwrCase() {
-				var lwrCaseVal = prompt("Include Lowercase Y/N ? ", "Y");
-				// Create Lowercase array
-				if (lwrCaseVal != null && lwrCaseVal === "Y") {
-					lwrCaseVal = range("a", "z");
-					// Evoke Next Uppercase Criteria
-					upCase();
-				}
-				if (lwrCaseVal != null && lwrCaseVal === "N") {
-					upCase();
-				} else {
-					outOfRangeOrCancel();
-				}
-				return lwrCaseVal;
-			}
+			// function lwrCase() {
+			// 	var lwrCaseVal = prompt("Include Lowercase Y/N ? ", "Y");
+			// 	// Create Lowercase array
+			// 	if (lwrCaseVal != null && lwrCaseVal === "Y") {
+			// 		lwrCaseVal = range("a", "z");
+			// 		// Evoke Next Uppercase Criteria
+			// 		upCase();
+			// 	}
+			// 	if (lwrCaseVal != null && lwrCaseVal === "N") {
+			// 		upCase();
+			// 	} else {
+			// 		outOfRangeOrCancel();
+			// 	}
+			// 	return lwrCaseVal;
+			// }
 			// Ask User if upper case should be included
-			function upCase() {
-				var upCaseVal = prompt("Include Uppercase Y/N ? ", "Y");
-				if (upCaseVal != null && upCaseVal === "Y") {
-					upCaseVal = range("A", "Z");
-					// Evoke Next Numeric Criteria
-					incNum();
-				}
-				if (upCaseVal != null && upCaseVal === "N") {
-					incNum();
-				} else {
-					outOfRangeOrCancel();
-				}
-			}
+			// function upCase() {
+			// 	var upCaseVal = prompt("Include Uppercase Y/N ? ", "Y");
+			// 	if (upCaseVal != null && upCaseVal === "Y") {
+			// 		upCaseVal = range("A", "Z");
+			// 		// Evoke Next Numeric Criteria
+			// 		incNum();
+			// 	}
+			// 	if (upCaseVal != null && upCaseVal === "N") {
+			// 		incNum();
+			// 	} else {
+			// 		outOfRangeOrCancel();
+			// 	}
+			// }
 			// Ask user if we should include Numeric Values
-			function incNum() {
-				var incNumVal = prompt("Include Numeric Y/N ? ", "Y");
-				if (incNumVal != null && incNumVal === "Y") {
-					incNumVal = range("0", "9");
-					// Evoke Next Criteria
-					SpecialChar();
-				}
-				if (incNumVal != null && incNumVal === "N") {
-					SpecialChar();
-				} else {
-					outOfRangeOrCancel();
-				}
-			}
+			// function incNum() {
+			// 	var incNumVal = prompt("Include Numeric Y/N ? ", "Y");
+			// 	if (incNumVal != null && incNumVal === "Y") {
+			// 		incNumVal = range("0", "9");
+			// 		// Evoke Next Criteria
+			// 		SpecialChar();
+			// 	}
+			// 	if (incNumVal != null && incNumVal === "N") {
+			// 		SpecialChar();
+			// 	} else {
+			// 		outOfRangeOrCancel();
+			// 	}
+			// }
 			// Ask user if we should include Special  Char
-			function SpecialChar() {
-				var SpecialVal = prompt("Include Special Characters Y/N ? ", "Y");
-				if (SpecialVal != null && SpecialVal === "Y") {
-					SpecialVal = range(" ", "/").concat(
-						range(":", "@"),
-						range("[", "`"),
-						range("{", "~")
-					);
-					// Generate Password
-					generatePw();
-				}
-				if (SpecialVal != null && SpecialVal === "N") {
-					generatePw();
-				} else {
-					outOfRangeOrCancel();
-				}
-			}
+			// function SpecialChar() {
+			// 	var SpecialVal = prompt("Include Special Characters Y/N ? ", "Y");
+			// 	if (SpecialVal != null && SpecialVal === "Y") {
+			// 		SpecialVal = range(" ", "/").concat(
+			// 			range(":", "@"),
+			// 			range("[", "`"),
+			// 			range("{", "~")
+			// 		);
+			// 		// Generate Password
+			// 		generatePw();
+			// 	}
+			// 	if (SpecialVal != null && SpecialVal === "N") {
+			// 		generatePw();
+			// 	} else {
+			// 		outOfRangeOrCancel();
+			// 	}
+			// }
 
-			function generatePw() {
+			function generatePw(results, PwLengthVal) {
+				console.log(results);
+
+				function shuffle(array) {
+					array.sort(() => Math.random() - 0.5);
+				}
+
+				shuffle(results);
+				console.log(results.slice(0, PwLengthVal).join(""));
 				document.getElementById("demo").innerHTML =
-					"Test" + lwrCaseVal.concat(upCaseVal, incNumVal, SpecialVal);
+					"Password: " + results.slice(0, PwLengthVal).join("");
 			}
 
 			function outOfRangeOrCancel() {
