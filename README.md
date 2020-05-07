@@ -49,6 +49,6 @@ SO THAT I can create a strong password that provides greater security
 
 The following image demonstrates the application functionality:
 
-![Demo](/Assets/images/Dre's Password Generator.gif)
+![Demo](Assets/images/Dre's Password Generator.gif)
 
 ../media/playerprofile-mobile.png?raw=true
