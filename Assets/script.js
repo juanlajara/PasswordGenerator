@@ -60,7 +60,7 @@ function generatePw(results, PwLengthVal) {
 
 	shuffle(results);
 	document.getElementById("demo").innerHTML =
-		"You Secure Password :    " + results.slice(0, PwLengthVal).join("");
+		"Your Secure Password :    " + results.slice(0, PwLengthVal).join("");
 }
 
 function outOfRangeOrCancel() {
