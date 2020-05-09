@@ -10,6 +10,7 @@ var SpecialVal = range(" ", "/").concat(
 var results = [];
 //Run Password Generator
 function RunPWGen() {
+	results = [];
 	var PwLengthVal = prompt("How long would you like it (Min 8 / Max 128) ?", 8);
 
 	// Enforce the range Max & Min
